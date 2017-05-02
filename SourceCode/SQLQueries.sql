@@ -70,7 +70,21 @@ SELECT COUNT(dbo.airports.AIRPORT)
 FROM dbo.airports 
 WHERE LONGITUDE > -180.0 AND LONGITUDE < -110.0
 
+-- 5. Amount of flights cancelled per distance group -- 
+SELECT COUNT(dbo.flights.AIRLINE)
+  FROM [FlightDatabase_HW].[dbo].[flights] 
+  WHERE CANCELLED = 1 AND dbo.flights.long > 0 AND LONGITUDE <= 300.0
+  
+-- 5. Amount of flights cancelled per distance group -- 
+SELECT COUNT(dbo.flights.CANCELLED)
+  FROM [FlightDatabase_HW].[dbo].[flights] 
+  WHERE CANCELLED = 1 AND DISTANCE > 0 AND DISTANCE <= 300.0
 
+-- 5. Amount of flights per distance group -- 
+SELECT COUNT(dbo.flights.AIRLINE)
+  FROM [FlightDatabase_HW].[dbo].[flights] 
+  WHERE DISTANCE > 0 AND DISTANCE <= 300.0
+  
 -- 6. Most popular cancellation reason -- 
 SELECT CANCELLATION_REASON, COUNT(dbo.flights.CANCELLED)
 FROM dbo.flights
